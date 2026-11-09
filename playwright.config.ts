@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// VS Code eklentisi veya worker çalıştığında DISPLAY değerini zorunlu kıl
+process.env.DISPLAY = process.env.DISPLAY || ':1';
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -27,9 +30,9 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
-
+    headless: false,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on',
   },
 
   /* Configure projects for major browsers */
